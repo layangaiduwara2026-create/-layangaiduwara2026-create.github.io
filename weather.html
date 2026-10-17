@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weather - Layanga</title>
+<style>
+body{background:#0f172a;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0;font-family:sans-serif;color:white}
+.box{background:#1e293b;padding:25px;border-radius:20px;width:320px;text-align:center;box-shadow:0 10px 30px #000}
+input{width:100%;padding:12px;border-radius:10px;border:none;background:#020617;color:white;font-size:16px;box-sizing:border-box;margin:10px 0}
+button{width:100%;padding:12px;background:#38bdf8;border:none;border-radius:10px;font-weight:bold;font-size:16px;cursor:pointer;color:#020617}
+#result{margin-top:20px;background:#020617;padding:15px;border-radius:12px;display:none}
+.temp{font-size:48px;font-weight:bold;color:#38bdf8}
+a{color:#38bdf8;text-decoration:none;margin-top:15px;display:block}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>🌤️ Weather App</h2>
+<p style="color:#94a3b8">City එක Type කරලා Weather බලන්න</p>
+<input id="city" placeholder="Ex: Colombo, London, Tokyo">
+<button onclick="getWeather()">Get Weather</button>
+<div id="result">
+<h3 id="cityName"></h3>
+<div class="temp" id="temp"></div>
+<p id="desc"></p>
+<p id="hum"></p>
+</div>
+<a href="index.html">← Back to Portfolio</a>
+</div>
+<script>
+async function getWeather(){
+ let city=document.getElementById('city').value;
+ if(!city){alert('City එකක් දාන්න!');return;}
+ document.getElementById('result').style.display='block';
+ document.getElementById('cityName').innerText='Loading... '+city;
+ try{
+  // Step 1: City -> Lat Lon
+  let geo=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`);
+  let geoData=await geo.json();
+  if(!geoData.results){throw 'City not found';}
+  let lat=geoData.results[0].latitude;
+  let lon=geoData.results[0].longitude;
+  let name=geoData.results[0].name+', '+geoData.results[0].country;
+  // Step 2: Weather
+  let w=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=relativehumidity_2m`);
+  let wData=await w.json();
+  document.getElementById('cityName').innerText=name;
+  document.getElementById('temp').innerText=wData.current_weather.temperature+'°C';
+  document.getElementById('desc').innerText='Wind: '+wData.current_weather.windspeed+' km/h';
+  document.getElementById('hum').innerText='Weather Code: '+wData.current_weather.weathercode+' (Live API!)';
+ }catch(e){
+  document.getElementById('cityName').innerText='Error!';
+  document.getElementById('desc').innerText=e;
+ }
+}
+</script>
+</body>
+</html>
