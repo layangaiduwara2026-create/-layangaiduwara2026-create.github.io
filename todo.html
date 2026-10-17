@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My To-Do App - Layanga</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+        .box { background: white; padding: 30px; border-radius: 15px; width: 350px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        h2 { text-align: center; }
+        input { width: 70%; padding: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        button { padding: 10px; border: none; background: #007bff; color: white; border-radius: 5px; cursor: pointer; }
+        li { list-style: none; background: #eee; margin-top: 10px; padding: 10px; border-radius: 5px; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>My To-Do List 📝</h2>
+        <input type="text" id="myInput" placeholder="අලුත් වැඩක් දාන්න...">
+        <button onclick="addTask()">Add</button>
+        <div id="myList"></div>
+    </div>
+
+    <script>
+        function addTask() {
+            let input = document.getElementById("myInput");
+            let list = document.getElementById("myList");
+            
+            if (input.value === "") {
+                alert("මොනවා හරි Type කරන්න!");
+                return;
+            }
+
+            // අලුත් li එකක් හදනවා
+            let li = document.createElement("li");
+            li.innerHTML = input.value + " <span onclick='this.parentElement.remove()' style='color:red; cursor:pointer;'>X</span>";
+            
+            list.appendChild(li);
+            input.value = ""; // Input එක හිස් කරනවා
+        }
+    </script>
+</body>
+</html>
