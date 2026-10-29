@@ -145,11 +145,10 @@ async function findIP(){const r=document.getElementById('ipResult');r.classList.
 .user{background:#00FF88;color:#000;margin-left:auto}
 .bot{background:#1a1a1a;border:1px solid #333;color:white}
 </style>
-
 <div id="layan-btn" onclick="toggleLayan()">🤖</div>
 <div id="layan-chat">
 <div class="layan-head"><span>LAYAN AI HELPER</span><span onclick="toggleLayan()" style="cursor:pointer">✕</span></div>
-<div id="layan-body" class="layan-body"><div class="msg bot">මචං මම LAYAN! GPA? Assignment? අහපන් 😎</div></div>
+<div id="layan-body" class="layan-body"><div class="msg bot">මචං මම LAYAN! 😎 Meta AI වගේම වැඩ කරන ඔයාගේ Campus AI එක. මොනවා හරි අහපන්!</div></div>
 <div class="layan-input"><input id="layan-in" placeholder="ඔයාගේ ප්‍රශ්නෙ..." onkeypress="if(event.key==='Enter')sendLayan()"><button onclick="sendLayan()">SEND</button></div>
 </div>
 
@@ -158,13 +157,34 @@ function toggleLayan(){let c=document.getElementById('layan-chat');c.style.displ
 function sendLayan(){
 let inp=document.getElementById('layan-in');let body=document.getElementById('layan-body');
 if(!inp.value.trim())return;
-let q=inp.value.toLowerCase();let txt=inp.value;
+let q=inp.value.toLowerCase().trim();let txt=inp.value;
 body.innerHTML+=`<div class="msg user">${txt}</div>`;inp.value='';
-let a="ඒක සුපිරි ප්‍රශ්නයක් මචං! Hub එකකින් බලන්න 😉";
-if(q.includes("hi")||q.includes("machan")||q.includes("බන්")) a="Hi බන්! කොහොමද? 😎";
-else if(q.includes("gpa")) a="GPA එකට GPA HUB එක open කරන්න 📈";
-else if(q.includes("past")||q.includes("paper")) a="Past Papers SCHOOL HUB එකේ තියෙනවා 📚";
-else if(q.includes("assign")) a="ASSIGNMENT HUB එකේ tools තියෙනවා 🤖";
+let a="";
+
+if(["hi","hello","machan","mchn","mokak","kohomada","oi","ub","faym"].some(w=>q.includes(w))){
+let r=["Hi බන්! 😎 කොහොමද ඉන්නේ?","Faym තමයි මචං! උබට මොකෝ ඕන?","Ow බන් කියපන්, මම ඉන්නවා!"];
+a=r[Math.floor(Math.random()*r.length)];
+}
+else if(q.includes("mona")||q.includes("magula")||q.includes("kari")||q.includes("pissu")){
+a="අයියෝ සැර වෙන්න එපා බන් 😂 මම තාම ඉගෙන ගන්නවා. හරියට අහපන් බලන්න.";
+}
+else if(q.includes("meta")||q.includes("oya kawda")||q.includes("oya monawada")||q.includes("who are you")){
+a="මම LAYAN බන්! 🤖 MR.Layanga_WH හදපු AI එක. Meta AI එක වගේම Smart, ඒත් මම ඔයාගේ Campus එකටම හදපු එකා!";
+}
+else if(q.includes("gpa")){a="GPA එක හදන්න STUDENT TOOLKIT එකේ GPA HUB එකට යන්න බන් 📈 ඕන නම් GPA එක කියපන් මම හදලා දෙන්නම්.";}
+else if(q.includes("assignment")||q.includes("report")||q.includes("cv")){a="ඒක STUDENT TOOLKIT එකේ තියෙනවා බන්! ASSIGNMENT HELPER / CV MAKER එකට යන්න.";}
+else if(q.includes("love")||q.includes("girl")||q.includes("kella")){a="ඒක නම් මටත් අමාරුයි බන් 😅 CAMPUS LIFE HUB එකේ tips ඇති!";}
+else if(q.length>3){
+let smart=[
+"අම්මෝ ඒක පට්ට ප්‍රශ්නයක් බන් 🤔 ඒ ගැන ටිකක් විස්තර කරලා අහපන්",
+"මට ඒක තේරුණා! ඒ ගැන SCHOOL HUB එකේ තියෙනවද බලලා නැද්ද?",
+"ඒකට නම් හොඳම උත්තරේ STUDENT TOOLKIT එකේ තියෙනවා බන් 😉",
+"හ්ම්... ඒක ගැන මම හිතලා බලන්නම්. වෙන දෙයක් අහපන් බලන්න 😎"
+];
+a=smart[Math.floor(Math.random()*smart.length)];
+}else{
+a="මොකක් හරි type කරන්න බන් 😊";
+}
 body.innerHTML+=`<div class="msg bot">${a}</div>`;
 body.scrollTop=body.scrollHeight;
 }
