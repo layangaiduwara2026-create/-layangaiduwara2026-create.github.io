@@ -133,50 +133,5 @@ function checkPass(){const p=document.getElementById('passInput').value;document
 function checkLink(){const l=document.getElementById('linkInput').value;document.getElementById('linkResult').innerText=l.includes('http')?'Scanning... 🔍':'Enter link';}
 async function findIP(){const r=document.getElementById('ipResult');r.classList.add('show');r.innerText='Finding...';fetch('https://api.ipify.org?format=json').then(res=>res.json()).then(data=>{r.innerText='Your IP: '+data.ip});}
 </script>
-<style>
-#layan-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#00FF88;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;cursor:pointer;z-index:99999;box-shadow:0 0 15px #00FF88}
-#layan-chat{position:fixed;bottom:90px;right:20px;width:360px;max-width:92%;height:480px;background:#0f0f0f;border:2px solid #00FF88;border-radius:20px;display:none;flex-direction:column;z-index:99999;overflow:hidden}
-.layan-head{background:#1a1a1a;padding:14px;color:#00FF88;font-weight:bold;display:flex;justify-content:space-between}
-.layan-body{flex:1;padding:15px;overflow-y:auto;color:#eee;font-size:14px}
-.layan-input{display:flex;border-top:1px solid #333}
-.layan-input input{flex:1;background:#1a1a1a;border:0;padding:12px;color:white;outline:none}
-.layan-input button{background:#00FF88;border:0;padding:12px 16px;cursor:pointer;font-weight:bold}
-.msg{margin:8px 0;padding:10px 12px;border-radius:12px;max-width:85%;line-height:1.4}
-.user{background:#00FF88;color:#000;margin-left:auto}
-.bot{background:#1a1a1a;border:1px solid #333;color:white}
-</style>
-<div id="layan-btn" onclick="toggleLayan()">🤖</div>
-<div id="layan-chat">
-<div class="layan-head"><span>LAYAN AI HELPER</span><span onclick="toggleLayan()" style="cursor:pointer">✕</span></div>
-<div id="layan-body" class="layan-body"><div class="msg bot">මචං මම LAYAN! 😎 Meta AI වගේම වැඩ කරන ඔයාගේ Campus AI එක. මොනවා හරි අහපන්!</div></div>
-<div class="layan-input"><input id="layan-in" placeholder="ඔයාගේ ප්‍රශ්නෙ..." onkeypress="if(event.key==='Enter')sendLayan()"><button onclick="sendLayan()">SEND</button></div>
-</div>
-
-<script>
-function toggleLayan(){let ch=document.getElementById('layan-chat');ch.style.display=ch.style.display==='flex'?'none':'flex';}
-function sendLayan(){
- let inp=document.getElementById('layan-in');
- let body=document.getElementById('layan-body');
- if(!inp.value.trim())return;
- let q=inp.value.toLowerCase();
- let txt=inp.value;
- body.innerHTML+=`<div class="msg user">${txt}</div>`;
- inp.value='';
- let a="";
- if(q.includes("hi")||q.includes("machan")||q.includes("faym")||q.includes("ub")){
-  const arr=["Hi බන්! 😎 කොහොමද?","Faym තමයි මචං! මොකෝ ඕන?","Ow බන් කියපන්!"];
-  a=arr[Math.floor(Math.random()*arr.length)];
- } else if(q.includes("mona")||q.includes("magula")||q.includes("kari")){
-  a="අයියෝ සැර වෙන්න එපා බන් 😂 හරි ප්‍රශ්නයක් අහපන්.";
- } else if(q.includes("meta")||q.includes("oya kawda")){
-  a="මම LAYAN බන්! MR.Layanga හදපු AI එක. Meta AI වගේම Smart!";
- } else {
-  const smart=["ඒක සුපිරි ප්‍රශ්නයක්! SCHOOL HUB එකේ බලපන් 😉","මට තේරුණා! ඒ ගැන විස්තර කරලා අහපන් 🤔","ඔය ප්‍රශ්නෙට හොඳම උත්තරේ HUB එකක තියෙනවා 😎"];
-  a=smart[Math.floor(Math.random()*smart.length)];
- }
- body.innerHTML+=`<div class="msg bot">${a}</div>`;
- body.scrollTop=body.scrollHeight;
-}
-</script>
 </body>
 </html>
