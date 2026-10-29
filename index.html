@@ -133,5 +133,43 @@ let v=localStorage.getItem('visits');v=v?parseInt(v)+1:1247;localStorage.setItem
 function checkPass(){const p=document.getElementById('passInput').value,r=document.getElementById('passResult');r.classList.add('show');let score=0;if(p.length>=8)score++;if(/[A-Z]/.test(p))score++;if(/[0-9]/.test(p))score++;if(/[^A-Za-z0-9]/.test(p))score++;r.innerText='Strength: '+['Very Weak','Weak','Medium','Strong','Very Strong'][score];r.style.background='rgba(0,255,136,0.15)'}
 function checkLink(){const l=document.getElementById('linkInput').value.toLowerCase(),r=document.getElementById('linkResult');r.classList.add('show');const bad=['free-money','login-verify','urgent','prize','bit.ly'];let risk=bad.filter(w=>l.includes(w)).length;if(risk>=2){r.innerText='HIGH RISK! Phishing!';r.style.background='rgba(255,60,60,0.2)'}else{r.innerText='Looks Safe';r.style.background='rgba(0,255,136,0.15)'}}
 async function findIP(){const r=document.getElementById('ipResult');r.classList.add('show');r.innerText='Finding...';try{const res=await fetch('https://api.ipify.org?format=json');const d=await res.json();r.innerHTML='Your IP: <b style=color:#00ff88>'+d.ip+'</b>';}catch(e){r.innerText='Error'}}
-</script></body> 
+</script>
+
+<style> 
+#layan-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#00FF88;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;cursor:pointer;z-index:99999;box-shadow:0 0 15px #00FF88}
+#layan-chat{position:fixed;bottom:90px;right:20px;width:360px;max-width:92%;height:480px;background:#0f0f0f;border:2px solid #00FF88;border-radius:20px;display:none;flex-direction:column;z-index:99999;overflow:hidden}
+.layan-head{background:#1a1a1a;padding:14px;color:#00FF88;font-weight:bold;display:flex;justify-content:space-between}
+.layan-body{flex:1;padding:15px;overflow-y:auto;color:#eee;font-size:14px}
+.layan-input{display:flex;border-top:1px solid #333}
+.layan-input input{flex:1;background:#1a1a1a;border:0;padding:12px;color:white;outline:none}
+.layan-input button{background:#00FF88;border:0;padding:12px 16px;cursor:pointer;font-weight:bold}
+.msg{margin:8px 0;padding:10px 12px;border-radius:12px;max-width:85%;line-height:1.4}
+.user{background:#00FF88;color:#000;margin-left:auto}
+.bot{background:#1a1a1a;border:1px solid #333;color:white}
+</style>
+
+<div id="layan-btn" onclick="toggleLayan()">🤖</div>
+<div id="layan-chat">
+<div class="layan-head"><span>LAYAN AI HELPER</span><span onclick="toggleLayan()" style="cursor:pointer">✕</span></div>
+<div id="layan-body" class="layan-body"><div class="msg bot">මචං මම LAYAN! GPA? Assignment? අහපන් 😎</div></div>
+<div class="layan-input"><input id="layan-in" placeholder="ඔයාගේ ප්‍රශ්නෙ..." onkeypress="if(event.key==='Enter')sendLayan()"><button onclick="sendLayan()">SEND</button></div>
+</div>
+
+<script>
+function toggleLayan(){let c=document.getElementById('layan-chat');c.style.display=c.style.display==='flex'?'none':'flex'}
+function sendLayan(){
+let inp=document.getElementById('layan-in');let body=document.getElementById('layan-body');
+if(!inp.value.trim())return;
+let q=inp.value.toLowerCase();let txt=inp.value;
+body.innerHTML+=`<div class="msg user">${txt}</div>`;inp.value='';
+let a="ඒක සුපිරි ප්‍රශ්නයක්! Hub එකකින් බලන්න 😉";
+if(q.includes("hi")||q.includes("machan")||q.includes("බන්"))a="Hi බන්! කොහොමද? 😎";
+else if(q.includes("gpa"))a="GPA එකට GPA HUB එක open කරන්න 📈";
+else if(q.includes("past")||q.includes("paper"))a="Past Papers SCHOOL HUB එකේ තියෙනවා 📚";
+else if(q.includes("assign"))a="ASSIGNMENT HUB එකේ ඔක්කොම tools තියෙනවා 🤖";
+body.innerHTML+=`<div class="msg bot">${a}</div>`;
+body.scrollTop=body.scrollHeight;
+}
+</script>
+</body>
 </html>
