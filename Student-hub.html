@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLIIT Student Hub - 8 Tools</title>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+body{background:#0a0e14;color:#fff;font-family:monospace;padding:15px}
+h2{text-align:center;color:#00ff88}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#151a23;border:1px solid #00ff8855;padding:14px;border-radius:12px;text-align:center;cursor:pointer}
+.card:hover{border-color:#00ff88}
+.btn{background:#00ff88;color:#000;padding:7px 14px;border-radius:6px;font-weight:bold;border:none;margin-top:8px;cursor:pointer}
+#toolArea{background:#151a23;border:1px solid #00ff88;padding:15px;border-radius:12px;margin-top:20px;display:none}
+input,textarea,select{width:100%;background:#0a0e14;color:#fff;border:1px solid #333;padding:10px;border-radius:6px;margin-top:8px;box-sizing:border-box}
+canvas{width:100%;background:#fff;border-radius:8px;margin-top:10px}
+</style>
+</head>
+<body>
+<h2>🎓 SLIIT STUDENT HUB</h2>
+<p style="text-align:center;font-size:10px;color:#8b9bb4">8 VIRAL TOOLS - By MR.Layanga_WH</p>
+
+<div class="grid">
+<div class="card" onclick="openTool(1)"><div style="font-size:28px">✍️</div><b style="font-size:11px">Text to Handwriting</b></div>
+<div class="card" onclick="openTool(2)"><div style="font-size:28px">📄</div><b style="font-size:11px">Image to Text OCR</b></div>
+<div class="card" onclick="openTool(3)"><div style="font-size:28px">📚</div><b style="font-size:11px">Image to PDF</b></div>
+<div class="card" onclick="openTool(4)"><div style="font-size:28px">🎓</div><b style="font-size:11px">GPA Calculator</b></div>
+<div class="card" onclick="openTool(5)"><div style="font-size:28px">💼</div><b style="font-size:11px">CV Maker</b></div>
+<div class="card" onclick="openTool(6)"><div style="font-size:28px">🖼️</div><b style="font-size:11px">ID Photo Maker</b></div>
+<div class="card" onclick="openTool(7)"><div style="font-size:28px">🔗</div><b style="font-size:11px">WA Link Gen</b></div>
+<div class="card" onclick="openTool(8)"><div style="font-size:28px">🎨</div><b style="font-size:11px">Code to Image</b></div>
+</div>
+
+<div id="toolArea"></div>
+
+<script>
+function openTool(n){
+ const a=document.getElementById('toolArea'); a.style.display='block'; a.scrollIntoView();
+ if(n==1) a.innerHTML=`<h3>✍️ Text to Handwriting</h3><textarea id="hwT" rows="5" placeholder="Assignment type here..."></textarea><select id="hwFont"><option value="cursive">Cursive</option><option value="Patrick Hand">Patrick Hand</option></select><button class="btn" onclick="doHW()">Generate</button><canvas id="hwC" width="1000" height="600"></canvas><br><button class="btn" onclick="downHW()">Download PNG</button>`;
+ if(n==2) a.innerHTML=`<h3>📄 Image to Text (OCR)</h3><input type="file" id="ocrFile" accept="image/*"><button class="btn" onclick="doOCR()">Extract Text</button><p id="ocrStatus" style="color:#00ff88;font-size:11px"></p><textarea id="ocrOut" rows="6"></textarea>`;
+ if(n==3) a.innerHTML=`<h3>📚 Image to PDF</h3><input type="file" id="pdfFile" accept="image/*"><button class="btn" onclick="doPDF()">Convert to PDF</button>`;
+ if(n==4) a.innerHTML=`<h3>🎓 GPA Calculator</h3><input id="g1" placeholder="Subject 1 Grade Point (ex: 4.0)"><input id="g2" placeholder="Subject 2 (ex: 3.3)"><input id="g3" placeholder="Subject 3"><input id="g4" placeholder="Subject 4"><button class="btn" onclick="doGPA()">Calculate</button><h2 id="gpaR" style="color:#00ff88"></h2>`;
+ if(n==5) a.innerHTML=`<h3>💼 One-Click CV Maker</h3><input id="cvName" placeholder="Full Name"><input id="cvSkill" placeholder="Skills: Java, Python"><textarea id="cvAbout" placeholder="About You"></textarea><button class="btn" onclick="doCV()">Preview CV</button><div id="cvPrev" style="background:#fff;color:#000;padding:15px;border-radius:8px;margin-top:10px"></div>`;
+ if(n==6) a.innerHTML=`<h3>🖼️ ID Photo Maker</h3><input type="file" id="idFile" accept="image/*"><button class="btn" onclick="doID()">Make White BG & Crop</button><canvas id="idC"></canvas><br><button class="btn" onclick="downID()">Download</button>`;
+ if(n==7) a.innerHTML=`<h3>🔗 WA Link Generator</h3><input id="waN" placeholder="9477XXXXXXX (without +)"><input id="waM" placeholder="Message"><button class="btn" onclick="doWA()">Generate</button><p id="waR" style="color:#00ff88;word-break:break-all"></p>`;
+ if(n==8) a.innerHTML=`<h3>🎨 Code to Image</h3><textarea id="codeIn" rows="8" placeholder="paste your code here..."></textarea><button class="btn" onclick="doCodeImg()">Generate Image</button><canvas id="codeC" width="800" height="400"></canvas><br><button class="btn" onclick="downCode()">Download</button>`;
+}
+
+function doHW(){ const t=document.getElementById('hwT').value; const c=document.getElementById('hwC'); const x=c.getContext('2d'); x.fillStyle="#fff"; x.fillRect(0,0,c.width,c.height); x.strokeStyle="#aaddff"; for(let i=60;i<c.height;i+=30){x.beginPath();x.moveTo(0,i);x.lineTo(c.width,i);x.stroke();} x.fillStyle="#000"; x.font="24px cursive"; const lines=t.match(/.{1,65}/g)||[]; lines.forEach((l,i)=>x.fillText(l,30,45+i*30));}
+function downHW(){ const c=document.getElementById('hwC'); const a=document.createElement('a'); a.download='handwriting.png'; a.href=c.toDataURL(); a.click();}
+
+async function doOCR(){ const f=document.getElementById('ocrFile').files[0]; if(!f)return alert('Select image'); document.getElementById('ocrStatus').innerText='Reading... 30sec වගේ යනවා...'; const {data:{text}} = await Tesseract.recognize(f,'eng'); document.getElementById('ocrOut').value=text; document.getElementById('ocrStatus').innerText='Done!';}
+
+function doPDF(){ const f=document.getElementById('pdfFile').files[0]; const reader=new FileReader(); reader.onload=function(e){ const {jsPDF}=window.jspdf; const doc=new jsPDF(); const img=new Image(); img.onload=()=>{doc.addImage(img,'JPEG',10,10,190,0); doc.save('converted.pdf');}; img.src=e.target.result;}; reader.readAsDataURL(f);}
+
+function doGPA(){ let s=0,c=0; for(let i=1;i<=4;i++){ let v=parseFloat(document.getElementById('g'+i).value); if(!isNaN(v)){s+=v;c++;}} const avg=c? (s/c).toFixed(2):0; document.getElementById('gpaR').innerText='Your GPA: '+avg+' '+(avg>=3.7?'🔥 First Class!':'');}
+
+function doCV(){ const n=document.getElementById('cvName').value; const sk=document.getElementById('cvSkill').value; const ab=document.getElementById('cvAbout').value; document.getElementById('cvPrev').innerHTML=`<h2>${n}</h2><p><b>Skills:</b> ${sk}</p><p>${ab}</p><p style="font-size:10px">Generated by MR.Layanga_WH Student Hub</p>`;}
+
+function doID(){ const f=document.getElementById('idFile').files[0]; const c=document.getElementById('idC'); const x=c.getContext('2d'); const img=new Image(); img.onload=()=>{c.width=350;c.height=450;x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,0,350,450);}; img.src=URL.createObjectURL(f);}
+function downID(){ const c=document.getElementById('idC'); const a=document.createElement('a'); a.download='id-photo.jpg'; a.href=c.toDataURL('image/jpeg'); a.click();}
+
+function doWA(){ const num=document.getElementById('waN').value; const msg=document.getElementById('waM').value; const link=`https://wa.me/${num}?text=${encodeURIComponent(msg)}`; document.getElementById('waR').innerHTML=`<a href="${link}" target="_blank" style="color:#00ff88">${link}</a>`;}
+
+function doCodeImg(){ const t=document.getElementById('codeIn').value; const c=document.getElementById('codeC'); const x=c.getContext('2d'); x.fillStyle="#151a23"; x.fillRect(0,0,c.width,c.height); x.fillStyle="#00ff88"; x.font="14px monospace"; t.split('\n').forEach((l,i)=>x.fillText(l,20,30+i*18));}
+function downCode(){ const c=document.getElementById('codeC'); const a=document.createElement('a'); a.download='code.png'; a.href=c.toDataURL(); a.click();}
+</script>
+</body>
+</html>
