@@ -185,7 +185,7 @@ async function sendLayan(){
     body.innerHTML+=`<div class="msg bot">${reply}</div>`;
   }catch(e){
     document.getElementById('temp').remove();
-    body.innerHTML+=`<div class="msg bot">API Key එක වැරදියි මචං. PASTE_YOUR_KEY_HERE තැනට key එක දැම්මද බලන්න. Error: ${e.message}</div>`;
+    const API_KEY = "sk-or-v1-9e2c9b8a7f6d5e4c3b2a1d0;
   }
   body.scrollTop=body.scrollHeight;
 }
