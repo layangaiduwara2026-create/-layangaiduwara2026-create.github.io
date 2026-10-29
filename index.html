@@ -134,8 +134,7 @@ function checkPass(){const p=document.getElementById('passInput').value,r=docume
 function checkLink(){const l=document.getElementById('linkInput').value.toLowerCase(),r=document.getElementById('linkResult');r.classList.add('show');const bad=['free-money','login-verify','urgent','prize','bit.ly'];let risk=bad.filter(w=>l.includes(w)).length;if(risk>=2){r.innerText='HIGH RISK! Phishing!';r.style.background='rgba(255,60,60,0.2)'}else{r.innerText='Looks Safe';r.style.background='rgba(0,255,136,0.15)'}}
 async function findIP(){const r=document.getElementById('ipResult');r.classList.add('show');r.innerText='Finding...';try{const res=await fetch('https://api.ipify.org?format=json');const d=await res.json();r.innerHTML='Your IP: <b style=color:#00ff88>'+d.ip+'</b>';}catch(e){r.innerText='Error'}}
 </script>
-
-<style> 
+style> 
 #layan-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#00FF88;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;cursor:pointer;z-index:99999;box-shadow:0 0 15px #00FF88}
 #layan-chat{position:fixed;bottom:90px;right:20px;width:360px;max-width:92%;height:480px;background:#0f0f0f;border:2px solid #00FF88;border-radius:20px;display:none;flex-direction:column;z-index:99999;overflow:hidden}
 .layan-head{background:#1a1a1a;padding:14px;color:#00FF88;font-weight:bold;display:flex;justify-content:space-between}
