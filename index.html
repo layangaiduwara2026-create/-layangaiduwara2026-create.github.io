@@ -28,30 +28,53 @@ body{background:#0a0e1a;color:#e0e6ed;font-family:'Space Grotesk',sans-serif}
 <div class="terminal" id="terminal"></div>
 <div class="badge">White Hat Hacker | Cyber Security Enthusiast</div>
 <div style="font-size:11px">Visitors: <b id="visits" style="color:#00ff88">0</b></div></div>
+<div id="creator-card" style="display:block;background:linear-gradient(135deg,#000,#1a1a1a);border:2px solid #00FF88;border-radius:15px;padding:18px;margin-bottom:15px;box-shadow:0 0 20px rgba(0,255,136,0.3);">
 
-<div class="card"><h3>About Me</h3><p style="font-size:13px">A.M. Layanga Iduwara Pushpakumara - Aspiring White Hat Hacker from Sri Lanka. Hack to Protect. O/L 2026, SLIIT 2027 Cyber Security</p></div>
+<div onclick="toggleCreator()" style="text-align:center;cursor:pointer;">
+<div style="font-size:32px;">👨‍💻</div>
+<div style="color:#00FF88;font-weight:900;font-size:15px;margin-top:5px;">ABOUT THE CREATOR</div>
+<div style="color:#aaa;font-size:10px;margin-top:4px;">Website Hadapu Kenek | White Hat Hacker</div>
+<div id="arrow" style="color:#00FF88;font-size:11px;margin-top:10px;">▼ CLICK TO OPEN ▼</div>
+</div>
 
-<div class="card"><h3>Skills & Tools</h3><div class="tools"><span class="tool">Kali Linux</span><span class="tool">Nmap</span><span class="tool">Wireshark</span><span class="tool">Burp Suite</span><span class="tool">TryHackMe</span></div></div>
-<div class="card">
-<h3>📞 Contact Me</h3>
-<div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
+<!-- ඇතුලට ගියා! About + Skills + Contact 3ම මේ Card එක ඇතුලේ! -->
+<div id="inside-details" style="display:none;margin-top:15px;border-top:1px solid #333;padding-top:15px;">
 
-<a href="https://wa.me/94756210116" target="_blank" style="text-decoration:none;display:flex;align-items:center;gap:10px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);padding:10px 14px;border-radius:10px;color:#25D366;font-family:'JetBrains Mono',monospace;font-size:13px">
-<span style="font-size:18px">💬</span> 0755210116 - WhatsApp 1 (Click to Chat)
-</a>
+<div style="background:#1e1e1e;border-radius:10px;padding:12px;margin-bottom:10px;text-align:left;">
+<h3 style="color:#00FF88;margin:0 0 5px 0;font-size:13px;">About Me</h3>
+<p style="font-size:11px;color:#ccc;margin:0;">A.M. Layanga Iduwara Pushpakumara - Aspiring White Hat Hacker from Sri Lanka. Hack to Protect. Q/L 2026, SLIIT 2027 Cyber Security.</p>
+</div>
 
-<a href="https://wa.me/94760664530" target="_blank" style="text-decoration:none;display:flex;align-items:center;gap:10px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);padding:10px 14px;border-radius:10px;color:#25D366;font-family:'JetBrains Mono',monospace;font-size:13px">
-<span style="font-size:18px">💬</span> 0760664530 - WhatsApp 2 (Click to Chat)
-</a>
+<div style="background:#1e1e1e;border-radius:10px;padding:12px;margin-bottom:10px;text-align:left;">
+<h3 style="color:#00FF88;margin:0 0 5px 0;font-size:13px;">Skills & Tools</h3>
+<div style="display:flex;flex-wrap:wrap;gap:5px;">
+<span style="background:#0a0a0a;border:1px solid #333;padding:4px 8px;border-radius:20px;font-size:9px;">Kali Linux</span>
+<span style="background:#0a0a0a;border:1px solid #333;padding:4px 8px;border-radius:20px;font-size:9px;">Nmap</span>
+<span style="background:#0a0a0a;border:1px solid #333;padding:4px 8px;border-radius:20px;font-size:9px;">Wireshark</span>
+<span style="background:#0a0a0a;border:1px solid #333;padding:4px 8px;border-radius:20px;font-size:9px;">Burp Suite</span>
+<span style="background:#0a0a0a;border:1px solid #333;padding:4px 8px;border-radius:20px;font-size:9px;">TryHackMe</span>
+</div>
+</div>
 
-<a href="mailto:layangaiduwa2026@gmail.com" style="text-decoration:none;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);padding:10px 14px;border-radius:10px;color:#e0e6ed;font-family:'JetBrains Mono',monospace;font-size:13px">
-<span style="font-size:18px">📧</span> layangaiduwa2026@gmail.com
-</a>
+<div style="background:#1e1e1e;border-radius:10px;padding:12px;text-align:left;">
+<h3 style="color:#00FF88;margin:0 0 8px 0;font-size:13px;">Contact Me</h3>
+<a href="https://wa.me/94755210116" target="_blank" style="text-decoration:none;display:flex;align-items:center;gap:10px;background:#0a3d1f;padding:8px;border-radius:8px;margin-bottom:6px;font-size:11px;color:#fff;">📱 0755210116 - WhatsApp 1</a>
+<a href="https://wa.me/94760664530" target="_blank" style="text-decoration:none;display:flex;align-items:center;gap:10px;background:#0a3d1f;padding:8px;border-radius:8px;margin-bottom:6px;font-size:11px;color:#fff;">📱 0760664530 - WhatsApp 2</a>
+<a href="mailto:layangaiduwa2026@gmail.com" style="text-decoration:none;display:flex;align-items:center;gap:10px;background:#1a1a1a;padding:8px;border-radius:8px;margin-bottom:6px;font-size:11px;color:#fff;">📧 layangaiduwa2026@gmail.com</a>
+<a href="https://github.com/layangaiduwa2026-cmyk" target="_blank" style="text-decoration:none;display:flex;align-items:center;gap:10px;background:#1a1a1a;padding:8px;border-radius:8px;font-size:11px;color:#fff;">💻 github.com/layangaiduwa2026-cmyk</a>
+</div>
 
-<a href="https://github.com/layangaiduwa2026-cmyk" target="_blank" style="text-decoration:none;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);padding:10px 14px;border-radius:10px;color:#e0e6ed;font-family:'JetBrains Mono',monospace;font-size:13px">
-<span style="font-size:18px">💻</span> github.com/layangaiduwa2026-cmyk
-</a>
+</div>
+</div>
 
+<script>
+function toggleCreator(){
+  var x=document.getElementById("inside-details");
+  var y=document.getElementById("arrow");
+  if(x.style.display==="none"){x.style.display="block";y.innerText="▲ CLICK TO CLOSE ▲";}
+  else{x.style.display="none";y.innerText="▼ CLICK TO OPEN ▼";}
+}
+</script>
 </div>
 </div>
 <div id="creator-card" style="display:block;background:linear-gradient(135deg,#000,#1a1a1a);border:2px solid #00FF88;border-radius:15px;padding:18px;text-align:center;margin-bottom:15px;box-shadow:0 0 20px rgba(0,255,136,0.3);cursor:pointer;" onclick="document.getElementById('about-details').scrollIntoView({behavior:'smooth'})">
