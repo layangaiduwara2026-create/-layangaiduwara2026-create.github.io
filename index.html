@@ -153,40 +153,29 @@ async function findIP(){const r=document.getElementById('ipResult');r.classList.
 </div>
 
 <script>
-function toggleLayan(){let c=document.getElementById('layan-chat');c.style.display=c.style.display==='flex'?'none':'flex';}
+function toggleLayan(){let ch=document.getElementById('layan-chat');ch.style.display=ch.style.display==='flex'?'none':'flex';}
 function sendLayan(){
-let inp=document.getElementById('layan-in');let body=document.getElementById('layan-body');
-if(!inp.value.trim())return;
-let q=inp.value.toLowerCase().trim();let txt=inp.value;
-body.innerHTML+=`<div class="msg user">${txt}</div>`;inp.value='';
-let a="";
-
-if(["hi","hello","machan","mchn","mokak","kohomada","oi","ub","faym"].some(w=>q.includes(w))){
-let r=["Hi බන්! 😎 කොහොමද ඉන්නේ?","Faym තමයි මචං! උබට මොකෝ ඕන?","Ow බන් කියපන්, මම ඉන්නවා!"];
-a=r[Math.floor(Math.random()*r.length)];
-}
-else if(q.includes("mona")||q.includes("magula")||q.includes("kari")||q.includes("pissu")){
-a="අයියෝ සැර වෙන්න එපා බන් 😂 මම තාම ඉගෙන ගන්නවා. හරියට අහපන් බලන්න.";
-}
-else if(q.includes("meta")||q.includes("oya kawda")||q.includes("oya monawada")||q.includes("who are you")){
-a="මම LAYAN බන්! 🤖 MR.Layanga_WH හදපු AI එක. Meta AI එක වගේම Smart, ඒත් මම ඔයාගේ Campus එකටම හදපු එකා!";
-}
-else if(q.includes("gpa")){a="GPA එක හදන්න STUDENT TOOLKIT එකේ GPA HUB එකට යන්න බන් 📈 ඕන නම් GPA එක කියපන් මම හදලා දෙන්නම්.";}
-else if(q.includes("assignment")||q.includes("report")||q.includes("cv")){a="ඒක STUDENT TOOLKIT එකේ තියෙනවා බන්! ASSIGNMENT HELPER / CV MAKER එකට යන්න.";}
-else if(q.includes("love")||q.includes("girl")||q.includes("kella")){a="ඒක නම් මටත් අමාරුයි බන් 😅 CAMPUS LIFE HUB එකේ tips ඇති!";}
-else if(q.length>3){
-let smart=[
-"අම්මෝ ඒක පට්ට ප්‍රශ්නයක් බන් 🤔 ඒ ගැන ටිකක් විස්තර කරලා අහපන්",
-"මට ඒක තේරුණා! ඒ ගැන SCHOOL HUB එකේ තියෙනවද බලලා නැද්ද?",
-"ඒකට නම් හොඳම උත්තරේ STUDENT TOOLKIT එකේ තියෙනවා බන් 😉",
-"හ්ම්... ඒක ගැන මම හිතලා බලන්නම්. වෙන දෙයක් අහපන් බලන්න 😎"
-];
-a=smart[Math.floor(Math.random()*smart.length)];
-}else{
-a="මොකක් හරි type කරන්න බන් 😊";
-}
-body.innerHTML+=`<div class="msg bot">${a}</div>`;
-body.scrollTop=body.scrollHeight;
+ let inp=document.getElementById('layan-in');
+ let body=document.getElementById('layan-body');
+ if(!inp.value.trim())return;
+ let q=inp.value.toLowerCase();
+ let txt=inp.value;
+ body.innerHTML+=`<div class="msg user">${txt}</div>`;
+ inp.value='';
+ let a="";
+ if(q.includes("hi")||q.includes("machan")||q.includes("faym")||q.includes("ub")){
+  const arr=["Hi බන්! 😎 කොහොමද?","Faym තමයි මචං! මොකෝ ඕන?","Ow බන් කියපන්!"];
+  a=arr[Math.floor(Math.random()*arr.length)];
+ } else if(q.includes("mona")||q.includes("magula")||q.includes("kari")){
+  a="අයියෝ සැර වෙන්න එපා බන් 😂 හරි ප්‍රශ්නයක් අහපන්.";
+ } else if(q.includes("meta")||q.includes("oya kawda")){
+  a="මම LAYAN බන්! MR.Layanga හදපු AI එක. Meta AI වගේම Smart!";
+ } else {
+  const smart=["ඒක සුපිරි ප්‍රශ්නයක්! SCHOOL HUB එකේ බලපන් 😉","මට තේරුණා! ඒ ගැන විස්තර කරලා අහපන් 🤔","ඔය ප්‍රශ්නෙට හොඳම උත්තරේ HUB එකක තියෙනවා 😎"];
+  a=smart[Math.floor(Math.random()*smart.length)];
+ }
+ body.innerHTML+=`<div class="msg bot">${a}</div>`;
+ body.scrollTop=body.scrollHeight;
 }
 </script>
 </body>
