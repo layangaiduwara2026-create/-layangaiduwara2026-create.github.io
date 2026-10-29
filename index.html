@@ -147,8 +147,29 @@ async function findIP(){const r=document.getElementById('ipResult');r.classList.
 .user{background:#00FF88;color:#000;margin-left:auto}
 .bot{background:#1a1a1a;border:1px solid #333;color:white}
 </style>
-
 <div id="layan-btn" onclick="toggleLayan()">🤖</div>
+<div id="layan-chat">
+<div class="layan-head"><span>LAYAN AI HELPER</span><span onclick="toggleLayan()" style="cursor:pointer">✕</span></div>
+<div id="layan-body" class="layan-body"><div class="msg bot">මචං මම LAYAN! GPA? Assignment? අහපන් 😎</div></div>
+<div class="layan-input"><input id="layan-in" placeholder="ඔයාගේ ප්‍රශ්නෙ..." onkeypress="if(event.key==='Enter')sendLayan()"><button onclick="sendLayan()">SEND</button></div>
+</div>
+
+<script>
+function toggleLayan(){let c=document.getElementById('layan-chat');c.style.display=c.style.display==='flex'?'none':'flex'}
+function sendLayan(){
+let inp=document.getElementById('layan-in');let body=document.getElementById('layan-body');
+if(!inp.value.trim())return;
+let q=inp.value.toLowerCase();let txt=inp.value;
+body.innerHTML+=`<div class="msg user">${txt}</div>`;inp.value='';
+let a="ඒක සුපිරි ප්‍රශ්නයක්! Hub එකකින් බලන්න 😉";
+if(q.includes("hi")||q.includes("machan")||q.includes("බන්"))a="Hi බන්! කොහොමද? 😎";
+else if(q.includes("gpa"))a="GPA එකට GPA HUB එක open කරන්න 📈";
+else if(q.includes("past")||q.includes("paper"))a="Past Papers SCHOOL HUB එකේ තියෙනවා 📚";
+else if(q.includes("assign"))a="ASSIGNMENT HUB එකේ ඔක්කොම tools තියෙනවා 🤖";
+body.innerHTML+=`<div class="msg bot">${a}</div>`;
+body.scrollTop=body.scrollHeight;
+}
+</script><div id="layan-btn" onclick="toggleLayan()">🤖</div>
 <div id="layan-chat">
 <div class="layan-head"><span>LAYAN AI HELPER</span><span onclick="toggleLayan()" style="cursor:pointer">✕</span></div>
 <div id="layan-body" class="layan-body"><div class="msg bot">මචං මම LAYAN! GPA? Assignment? අහපන් 😎</div></div>
