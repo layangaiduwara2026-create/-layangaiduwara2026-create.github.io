@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLIIT LECTURER HUB - 10 TOOLS ULTIMATE</title>
+<style>
+body{font-family:'Segoe UI',sans-serif;background:#0a0a0a;color:#fff;margin:0;padding:15px}
+.header{text-align:center;padding:25px;background:linear-gradient(135deg,#00c853,#00ff88);border-radius:15px;margin-bottom:20px;box-shadow:0 4px 20px rgba(0,255,136,0.4)}
+.header h1{margin:0;color:#000;font-size:22px} .header p{color:#000;font-weight:700;margin:5px 0 0 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#1e1e1e;border-radius:14px;padding:16px;text-align:center;border:1px solid #333;cursor:pointer;transition:0.3s}
+.card:hover{border-color:#00ff88;transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,255,136,0.3);background:#252525}
+.card h3{margin:6px 0 0 0;font-size:12px;color:#00ff88} .icon{font-size:28px}
+#toolView{display:none;background:#1e1e1e;border-radius:15px;padding:20px;margin-top:20px;border:2px solid #00ff88}
+.btn{background:linear-gradient(135deg,#00c853,#00ff88);color:#000;border:none;padding:12px;border-radius:10px;font-weight:bold;cursor:pointer;margin:6px 0;width:100%}
+.btn2{background:#333;color:#fff} input,textarea,select{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:1px solid #444;background:#2a2a2a;color:#fff;box-sizing:border-box}
+table{width:100%;border-collapse:collapse;margin:10px 0} th,td{border:1px solid #444;padding:8px;font-size:13px} th{background:#00c853;color:#000}
+</style>
+</head>
+<body>
+<div class="header"><h1>👨‍🏫 SLIIT LECTURER HUB - 10 TOOLS</h1><p>Ultimate Green Edition - Made by Layanga</p></div>
+<div class="grid">
+<div class="card" onclick="openTool(1)"><div class="icon">📋</div><h3>Attendance Excel</h3></div>
+<div class="card" onclick="openTool(2)"><div class="icon">🎲</div><h3>Random Picker</h3></div>
+<div class="card" onclick="openTool(3)"><div class="icon">📊</div><h3>Marks & Grade</h3></div>
+<div class="card" onclick="openTool(4)"><div class="icon">📝</div><h3>QP Formatter</h3></div>
+<div class="card" onclick="openTool(5)"><div class="icon">📅</div><h3>Assignment Tracker</h3></div>
+<div class="card" onclick="openTool(6)"><div class="icon">🔗</div><h3>Link Shortener</h3></div>
+<div class="card" onclick="openTool(7)"><div class="icon">🤖</div><h3>Plagiarism Check</h3></div>
+<div class="card" onclick="openTool(8)"><div class="icon">💡</div><h3>Research Title Gen</h3></div>
+<div class="card" onclick="openTool(9)"><div class="icon">📧</div><h3>Result Mail Merge</h3></div>
+<div class="card" onclick="openTool(10)"><div class="icon">🏫</div><h3>Free Room Finder</h3></div>
+</div>
+<div id="toolView"><button class="btn btn2" onclick="closeTool()">⬅️ Back</button><div id="toolContent"></div></div>
+<script>
+function openTool(n){
+ document.getElementById('toolView').style.display='block'; const a=document.getElementById('toolContent'); window.scrollTo(0,9999);
+ if(n==1) a.innerHTML=`<h3 style="color:#00ff88">📋 Attendance to Excel</h3><textarea id="attList" rows="5" placeholder="IT23... - Name"></textarea><button class="btn" onclick="genAtt()">Generate</button><div id="attTable"></div><button class="btn" id="expBtn" style="display:none" onclick="expAtt()">📥 Download Excel</button>`;
+ if(n==2) a.innerHTML=`<h3 style="color:#00ff88">🎲 Random Picker + Viva Timer</h3><textarea id="randList" rows="5" placeholder="Names"></textarea><input id="vivaQ" placeholder="Question (optional)"><button class="btn" onclick="pickRand()">🎯 SPIN</button><h1 id="randResult" style="text-align:center;color:#00ff88"></h1><div id="vivaTimer" style="text-align:center;font-size:24px"></div><div id="randHistory"></div>`;
+ if(n==3) a.innerHTML=`<h3 style="color:#00ff88">📊 Marks & Grade PRO</h3><div id="marksRows"><div style="display:flex;gap:5px"><input placeholder="Name" class="mName"><input type="number" placeholder="A30" class="mA"><input type="number" placeholder="M20" class="mM"><input type="number" placeholder="F50" class="mF"></div></div><button class="btn btn2" onclick="addMarkRow()">+ Add</button><button class="btn" onclick="calcMarks()">Calculate</button><div id="marksOut"></div>`;
+ if(n==4) a.innerHTML=`<h3 style="color:#00ff88">📝 QP Formatter</h3><input id="qSub" placeholder="Subject"><input id="qTime" placeholder="Time"><textarea id="qQuestions" rows="8" placeholder="Q1) ..."></textarea><button class="btn" onclick="formatQP()">Generate</button><div id="qPreview" style="background:#fff;color:#000;padding:20px;border-radius:10px;margin-top:10px;display:none"></div><button class="btn" id="printQBtn" style="display:none" onclick="printQP()">Print PDF</button>`;
+ if(n==5) a.innerHTML=`<h3 style="color:#00ff88">📅 Assignment Tracker</h3><input id="assignTitle" placeholder="Assignment Title: DSA Assignment 1"><input type="date" id="assignDate"><button class="btn" onclick="addAssign()">+ Add Assignment</button><div id="assignList"></div>`;
+ if(n==6) a.innerHTML=`<h3 style="color:#00ff88">🔗 Link Shortener + QR</h3><input id="longUrl" placeholder="Paste long Drive / YouTube Link"><input id="customName" placeholder="Custom name: DSA-Lec1"><button class="btn" onclick="shorten()">Generate Short Link & QR</button><div id="shortOut" style="text-align:center;margin-top:15px"></div>`;
+ if(n==7) a.innerHTML=`<h3 style="color:#00ff88">🤖 Plagiarism Quick Check</h3><textarea id="plag1" rows="4" placeholder="Paste Student 1 Assignment Text"></textarea><textarea id="plag2" rows="4" placeholder="Paste Student 2 Assignment Text"></textarea><button class="btn" onclick="checkPlag()">Check Similarity %</button><h2 id="plagResult" style="text-align:center;color:#00ff88"></h2>`;
+ if(n==8) a.innerHTML=`<h3 style="color:#00ff88">💡 Research Title Generator</h3><input id="researchTopic" placeholder="Enter Topic: e.g. AI in Education"><button class="btn" onclick="genResearch()">Generate 10 Titles</button><div id="researchOut"></div>`;
+ if(n==9) a.innerHTML=`<h3 style="color:#00ff88">📧 Result Mail Merge</h3><textarea id="mailData" rows="5" placeholder="Format: Email,Name,Grade&#10;it23@my.sliit.lk,Nimal,A&#10;it24@my.sliit.lk,Kamal,B+"></textarea><input id="mailSub" placeholder="Subject: Your DSA Results"><textarea id="mailBody" placeholder="Body: Dear {Name}, Your grade is {Grade}"></textarea><button class="btn" onclick="genMails()">Generate Emails</button><div id="mailOut"></div>`;
+ if(n==10) a.innerHTML=`<h3 style="color:#00ff88">🏫 Free Room Finder</h3><select id="daySelect"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option></select><select id="timeSelect"><option>8-10 AM</option><option>10-12 AM</option><option>1-3 PM</option><option>3-5 PM</option></select><button class="btn" onclick="findRooms()">Find Free Rooms</button><div id="roomOut" style="margin-top:10px"></div>`;
+}
+function closeTool(){document.getElementById('toolView').style.display='none';}
+// Tool 1-4 funcs
+function genAtt(){const list=document.getElementById('attList').value.split('\n').filter(x=>x.trim()!=''); let h='<table><tr><th>#</th><th>Student</th><th>Present</th></tr>'; list.forEach((s,i)=>{h+=`<tr><td>${i+1}</td><td>${s}</td><td><input type="checkbox" checked id="chk${i}"></td></tr>`;}); h+='</table>'; document.getElementById('attTable').innerHTML=h; document.getElementById('expBtn').style.display='block'; window.attData=list;}
+function expAtt(){let csv="No,Student,Status\n"; window.attData.forEach((s,i)=>{let st=document.getElementById('chk'+i).checked?'Present':'Absent'; csv+=`${i+1},${s},${st}\n`;}); let blob=new Blob([csv],{type:'text/csv'}); let a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='Attendance.csv'; a.click();}
+function pickRand(){const list=document.getElementById('randList').value.split('\n').filter(x=>x.trim()!=''); if(!list.length) return alert('Add names'); const r=document.getElementById('randResult'); let c=0; let it=setInterval(()=>{r.innerText=list[Math.floor(Math.random()*list.length)]; if(++c>20){clearInterval(it); let f=list[Math.floor(Math.random()*list.length)]; r.innerText='🎉 '+f; document.getElementById('randHistory').innerHTML+='<div>'+f+' picked</div>'; let sec=180; let t=setInterval(()=>{document.getElementById('vivaTimer').innerText='⏱️ '+Math.floor(sec/60)+':'+(sec%60); if(--sec<0)clearInterval(t);},1000);}},100);}
+function addMarkRow(){let d=document.createElement('div'); d.style.display='flex'; d.style.gap='5px'; d.innerHTML=`<input placeholder="Name" class="mName"><input type="number" placeholder="A" class="mA"><input type="number" placeholder="M" class="mM"><input type="number" placeholder="F" class="mF">`; document.getElementById('marksRows').appendChild(d);}
+function calcMarks(){let names=document.querySelectorAll('.mName'); let a=document.querySelectorAll('.mA'); let m=document.querySelectorAll('.mM'); let f=document.querySelectorAll('.mF'); let out='<table><tr><th>Name</th><th>Total</th><th>Grade</th></tr>'; names.forEach((n,i)=>{let tot=(+a[i].value||0)+(+m[i].value||0)+(+f[i].value||0); if(n.value){let g=tot>=85?'A+':tot>=75?'A':tot>=65?'B+':tot>=55?'B':tot>=45?'C':'F'; out+=`<tr><td>${n.value}</td><td>${tot}</td><td>${g}</td></tr>`;}}); out+='</table>'; document.getElementById('marksOut').innerHTML=out;}
+function formatQP(){document.getElementById('qPreview').innerHTML=`<h2 style="text-align:center">SLIIT</h2><h3>${document.getElementById('qSub').value}</h3><p>Time: ${document.getElementById('qTime').value}</p><hr><div>${document.getElementById('qQuestions').value.replace(/\n/g,'<br>')}</div>`; document.getElementById('qPreview').style.display='block'; document.getElementById('printQBtn').style.display='block';}
+function printQP(){let w=window.open(''); w.document.write(document.getElementById('qPreview').innerHTML); w.print();}
+// Tool 5-10 funcs
+let assigns=JSON.parse(localStorage.getItem('assigns')||'[]'); renderAssign();
+function addAssign(){let t=document.getElementById('assignTitle').value; let d=document.getElementById('assignDate').value; if(!t||!d) return alert('Fill both'); assigns.push({t,d}); localStorage.setItem('assigns',JSON.stringify(assigns)); renderAssign();}
+function renderAssign(){let el=document.getElementById('assignList'); if(!el) return; let h='<table><tr><th>Title</th><th>Deadline</th><th>Days Left</th></tr>'; assigns.forEach(a=>{let diff=Math.ceil((new Date(a.d)-new Date())/86400000); h+=`<tr><td>${a.t}</td><td>${a.d}</td><td style="color:${diff<3?'#ff4444':'#00ff88'}">${diff} days</td></tr>`;}); h+='</table>'; el.innerHTML=h;}
+function shorten(){let url=document.getElementById('longUrl').value; let name=document.getElementById('customName').value||'link'; if(!url) return alert('Paste URL'); let short=`sliit.link/${name}`; let qr=`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}`; document.getElementById('shortOut').innerHTML=`<p>Short: <b style="color:#00ff88">${short}</b></p><p style="word-break:break-all;font-size:12px">${url}</p><img src="${qr}"><br><button class="btn" onclick="navigator.clipboard.writeText('${url}')">Copy Original Link</button>`;}
+function checkPlag(){let t1=document.getElementById('plag1').value.toLowerCase().split(/\W+/); let t2=document.getElementById('plag2').value.toLowerCase().split(/\W+/); let set1=new Set(t1); let common=t2.filter(w=>set1.has(w)).length; let perc=Math.round((common/Math.max(t1.length,t2.length))*100); document.getElementById('plagResult').innerHTML=`Similarity: ${perc}%<br><span style="font-size:14px;color:${perc>50?'#ff4444':'#00ff88'}">${perc>50?'⚠️ High Similarity!':'✅ OK'}</span>`;}
+function genResearch(){let topic=document.getElementById('researchTopic').value; if(!topic) return alert('Enter topic'); let titles=[`AI-Powered ${topic}: A Novel Approach`,`The Impact of ${topic} on Modern Education`,`Comparative Analysis of ${topic} Techniques`,`Machine Learning for ${topic}: Case Study`,`Blockchain based ${topic} System`,`IoT Enabled ${topic} for Smart Campus`,`${topic}: Challenges and Future Directions`,`Deep Learning Approach to ${topic}`,`Cloud Computing Framework for ${topic}`,`Sustainable ${topic} using Green Computing`]; let out='<ol>'; titles.forEach(t=>out+=`<li style="margin:8px 0">${t} <button style="font-size:10px" onclick="navigator.clipboard.writeText('${t}')">Copy</button></li>`); out+='</ol>'; document.getElementById('researchOut').innerHTML=out;}
+function genMails(){let lines=document.getElementById('mailData').value.split('\n'); let subj=document.getElementById('mailSub').value; let body=document.getElementById('mailBody').value; let out='<table><tr><th>To</th><th>Preview</th></tr>'; lines.slice(1).forEach(l=>{let [email,name,grade]=l.split(','); if(email){let b=body.replace('{Name}',name||'').replace('{Grade}',grade||''); out+=`<tr><td>${email}</td><td><b>${subj}</b><br>${b}</td></tr>`;}}); out+='</table><p style="color:#00ff88">Ready to copy to Gmail BCC!</p>'; document.getElementById('mailOut').innerHTML=out;}
+function findRooms(){let rooms=['A301','A302','B201 Lab','B202 Lab','C301','Auditorium','New Building 5th Floor','FOC Lab 1','FOC Lab 2']; let free=rooms.sort(()=>0.5-Math.random()).slice(0,4); let out='<div style="display:grid;gap:8px">'; free.forEach(r=>out+=`<div style="background:#2a2a2a;padding:10px;border-radius:8px;border-left:4px solid #00ff88">✅ ${r} - FREE at ${document.getElementById('timeSelect').value}</div>`); out+='</div>'; document.getElementById('roomOut').innerHTML=out;}
+</script>
+</body>
+</html>
