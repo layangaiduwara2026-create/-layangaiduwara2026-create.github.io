@@ -54,15 +54,57 @@ body{background:#0a0e1a;color:#e0e6ed;font-family:'Space Grotesk',sans-serif}
 
 </div>
 </div>
-<a href="Student-hub.html" style="display:block;background:linear-gradient(90deg,#00ff88,#00ccff);color:#000;text-align:center;padding:14px;border-radius:12px;font-weight:900;text-decoration:none;margin:15px 0;box-shadow:0 0 20px #00ff8855;animation:glow 2s infinite;">
-🚀 SLIIT STUDENT HUB PRO - 8 Tools Live! CLICK HERE
-</a>
-  <!-- LECTURER HUB GREEN GLOW BAR -->
-<a href="lecturer-hub.html" style="text-decoration:none;">
-<div style="margin-top:12px;background:linear-gradient(90deg,#00c853,#00ff88);border-radius:15px;padding:18px;text-align:center;border:2px solid #00ff88;box-shadow:0 0 25px rgba(0,255,136,0.7);animation:glow 2s infinite alternate;">
-<div style="color:#000;font-weight:900;font-size:15px;line-height:1.3;">🚀 SLIIT LECTURER HUB PRO - 10 Tools Live!<br>CLICK HERE</div>
+<!-- ===== 1. ABOUT THE CREATOR - 3 IN ONE CATEGORY ===== -->
+<div id="creator-card" style="display:block;background:linear-gradient(135deg,#000,#1a1a1a);border:2px solid #00FF88;border-radius:15px;padding:18px;text-align:center;margin-bottom:15px;box-shadow:0 0 20px rgba(0,255,136,0.3);cursor:pointer;" onclick="document.getElementById('about-details').scrollIntoView({behavior:'smooth'})">
+<div style="font-size:32px;">👨‍💻</div>
+<div style="color:#00FF88;font-weight:900;font-size:15px;margin-top:5px;">ABOUT THE CREATOR</div>
+<div style="color:#aaa;font-size:10px;margin-top:4px;">Website Hadapu Kenek | White Hat Hacker</div>
+<div style="margin-top:10px;display:flex;gap:6px;justify-content:center;">
+<span style="background:#1e1e1e;border:1px solid #333;padding:4px 8px;border-radius:20px;font-size:8px;color:#fff;">ABOUT ME</span>
+<span style="background:#1e1e1e;border:1px solid #333;padding:4px 8px;border-radius:20px;font-size:8px;color:#fff;">CONTACT</span>
+<span style="background:#1e1e1e;border:1px solid #333;padding:4px 8px;border-radius:20px;font-size:8px;color:#fff;">SKILLS & TOOLS</span>
 </div>
-</a>
+<div style="color:#00FF88;font-size:9px;margin-top:10px;">↓ CLICK TO VIEW DETAILS ↓</div>
+</div>
+
+<!-- ===== 2. SEARCH BAR ===== -->
+<input type="text" id="searchBox" placeholder="🔍 Search 20 Categories... GPA, CV, Hacker" style="width:100%;padding:14px;border-radius:12px;border:1px solid #333;background:#1e1e1e;color:#fff;font-size:14px;margin-bottom:12px;box-sizing:border-box;outline:none;">
+
+<!-- ===== 3. 20 CATEGORY GRID ===== -->
+<div id="categoryGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+
+<!-- ඔයාගේ පරණ 2ම මේක ඇතුලේ තියෙනවා! නැති වෙන්නේ නෑ! -->
+<a href="Student-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #00FF88;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">🎓</div><div style="color:#fff;font-weight:700;font-size:10px;margin-top:5px">STUDENT<br>TOOLKIT</div></div></a>
+<a href="Lecturer-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #ffab00;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">👨‍🏫</div><div style="color:#fff;font-weight:700;font-size:10px;margin-top:5px">LECTURER<br>TOOLKIT</div></div></a>
+
+<!-- අලුත් 18 -->
+<a href="school-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #03A9F4;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">🏫</div><div style="color:#fff;font-weight:700;font-size:10px">SCHOOL HUB</div></div></a>
+<a href="cyber-lab.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #ff1744;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">💻</div><div style="color:#fff;font-weight:700;font-size:10px">CYBER LAB</div></div></a>
+<a href="gpa-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #e040fb;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">📊</div><div style="color:#fff;font-weight:700;font-size:10px">GPA HUB</div></div></a>
+<a href="assignment-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #00bfa5;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">📝</div><div style="color:#fff;font-weight:700;font-size:10px">ASSIGNMENT</div></div></a>
+<a href="library-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #ff9100;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">📚</div><div style="color:#fff;font-weight:700;font-size:10px">LIBRARY</div></div></a>
+<a href="coding-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #00e5ff;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">👨‍💻</div><div style="color:#fff;font-weight:700;font-size:10px">CODING LAB</div></div></a>
+<a href="career-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #2979ff;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">💼</div><div style="color:#fff;font-weight:700;font-size:10px">CAREER HUB</div></div></a>
+<a href="daily-tools.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #3d5afe;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">🛠️</div><div style="color:#fff;font-weight:700;font-size:10px">DAILY TOOLS</div></div></a>
+<a href="research-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #76ff03;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">🔬</div><div style="color:#fff;font-weight:700;font-size:10px">RESEARCH</div></div></a>
+<a href="finance-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #ffd600;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">💰</div><div style="color:#fff;font-weight:700;font-size:10px">FINANCE</div></div></a>
+<a href="productivity-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #00b248;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">⏰</div><div style="color:#fff;font-weight:700;font-size:10px">PRODUCTIVITY</div></div></a>
+<a href="community-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #00b0ff;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">💬</div><div style="color:#fff;font-weight:700;font-size:10px">COMMUNITY</div></div></a>
+<a href="scholarship-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #00c853;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">🏆</div><div style="color:#fff;font-weight:700;font-size:10px">SCHOLARSHIP</div></div></a>
+<a href="design-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #d500f9;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">🎨</div><div style="color:#fff;font-weight:700;font-size:10px">DESIGN HUB</div></div></a>
+<a href="events-hub.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #651fff;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">📅</div><div style="color:#fff;font-weight:700;font-size:10px">EVENTS HUB</div></div></a>
+<a href="campus-life.html" style="text-decoration:none"><div style="background:#1e1e1e;border-left:4px solid #ff4081;border-radius:12px;padding:14px;text-align:center"><div style="font-size:22px">🤝</div><div style="color:#fff;font-weight:700;font-size:10px">CAMPUS LIFE</div></div></a>
+
+</div>
+
+<script>
+document.getElementById('searchBox').addEventListener('input',function(e){
+  let val=e.target.value.toLowerCase();
+  document.querySelectorAll('#categoryGrid a').forEach(a=>{
+    a.style.display=a.innerText.toLowerCase().includes(val)?'block':'none';
+  });
+});
+</script>
 <style>@keyframes glow{from{box-shadow:0 0 20px #00ff88}to{box-shadow:0 0 35px #00ff88}}</style>
 <style>@keyframes glow{0%,100%{box-shadow:0 0 10px #00ff8855}50%{box-shadow:0 0 25px #00ff88}}</style>
 <div class="card"><h3>My Projects - LIVE NOW</h3>
