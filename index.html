@@ -133,4 +133,60 @@ let v=localStorage.getItem('visits');v=v?parseInt(v)+1:1247;localStorage.setItem
 function checkPass(){const p=document.getElementById('passInput').value,r=document.getElementById('passResult');r.classList.add('show');let score=0;if(p.length>=8)score++;if(/[A-Z]/.test(p))score++;if(/[0-9]/.test(p))score++;if(/[^A-Za-z0-9]/.test(p))score++;r.innerText='Strength: '+['Very Weak','Weak','Medium','Strong','Very Strong'][score];r.style.background='rgba(0,255,136,0.15)'}
 function checkLink(){const l=document.getElementById('linkInput').value.toLowerCase(),r=document.getElementById('linkResult');r.classList.add('show');const bad=['free-money','login-verify','urgent','prize','bit.ly'];let risk=bad.filter(w=>l.includes(w)).length;if(risk>=2){r.innerText='HIGH RISK! Phishing!';r.style.background='rgba(255,60,60,0.2)'}else{r.innerText='Looks Safe';r.style.background='rgba(0,255,136,0.15)'}}
 async function findIP(){const r=document.getElementById('ipResult');r.classList.add('show');r.innerText='Finding...';try{const res=await fetch('https://api.ipify.org?format=json');const d=await res.json();r.innerHTML='Your IP: <b style=color:#00ff88>'+d.ip+'</b>';}catch(e){r.innerText='Error'}}
-</script></body></html>
+</script></body> 
+<!-- LAYAN AI HELPER - REAL AI VERSION -->
+<style>
+#layan-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#00ff88;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;cursor:pointer;z-index:99999;box-shadow:0 0 20px rgba(0,255,136,0.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,255,136,0.7)}70%{box-shadow:0 0 0 15px rgba(0,255,136,0)}100%{box-shadow:0 0 0 0 rgba(0,255,136,0)}}
+#layan-chat{position:fixed;bottom:90px;right:20px;width:360px;max-width:92%;height:480px;background:#0f0f0f;border:2px solid #00ff88;border-radius:20px;display:none;flex-direction:column;z-index:99999;overflow:hidden}
+.layan-head{background:#1a1a1a;padding:14px;color:#00ff88;font-weight:bold;display:flex;justify-content:space-between}
+.layan-body{flex:1;padding:15px;overflow-y:auto;color:#eee;font-size:14px}
+.layan-input{display:flex;border-top:1px solid #333}
+.layan-input input{flex:1;background:#1a1a1a;border:0;padding:12px;color:white;outline:none}
+.layan-input button{background:#00ff88;border:0;padding:12px 16px;cursor:pointer;font-weight:bold}
+.msg{margin:8px 0;padding:10px 12px;border-radius:12px;max-width:85%;line-height:1.4}
+.user{background:#00ff88;color:#000;margin-left:auto}
+.bot{background:#1a1a1a;border:1px solid #333;color:white}
+</style>
+
+<div id="layan-btn" onclick="toggleLayan()">🤖</div>
+<div id="layan-chat">
+  <div class="layan-head"><span>LAYAN AI HELPER</span><span onclick="toggleLayan()" style="cursor:pointer">✕</span></div>
+  <div id="layan-body" class="layan-body"><div class="msg bot">මචං මම LAYAN AI! Assignment එකක්ද? GPA එකක්ද? අහන්න 😎</div></div>
+  <div class="layan-input"><input id="layan-in" placeholder="ඔයාගේ ප්‍රශ්නෙ..." onkeypress="if(event.key==='Enter') sendLayan()"><button onclick="sendLayan()">SEND</button></div>
+</div>
+
+<script>
+const API_KEY = "PASTE_YOUR_KEY_HERE"; // <--- මෙතනට ඔයාගේ OpenRouter Key එක paste කරන්න
+
+function toggleLayan(){let c=document.getElementById('layan-chat');c.style.display=c.style.display==='flex'?'none':'flex'}
+
+async function sendLayan(){
+  let inp=document.getElementById('layan-in'); let body=document.getElementById('layan-body');
+  if(!inp.value.trim()) return;
+  let userText=inp.value; body.innerHTML+=`<div class="msg user">${userText}</div>`; inp.value='';
+  body.innerHTML+=`<div id="temp" class="msg bot">Typing... ✨</div>`; body.scrollTop=body.scrollHeight;
+
+  try{
+    let res=await fetch("https://openrouter.ai/api/v1/chat/completions",{
+      method:"POST",
+      headers:{"Authorization":"Bearer "+API_KEY,"Content-Type":"application/json"},
+      body: JSON.stringify({
+        model:"meta-llama/llama-3.2-3b-instruct:free",
+        messages:[
+          {role:"system",content:"You are LAYAN AI HELPER, a friendly Sri Lankan student helper for 18 hubs website. Answer in Sinhala mixed English like a friendly machan. Help with GPA, assignments, past papers, coding, career."},
+          {role:"user",content:userText}
+        ]
+      })
+    });
+    let data=await res.json();
+    let reply=data.choices[0].message.content;
+    document.getElementById('temp').remove();
+    body.innerHTML+=`<div class="msg bot">${reply}</div>`;
+  }catch(e){
+    document.getElementById('temp').remove();
+    body.innerHTML+=`<div class="msg bot">API Key එක වැරදියි මචං. PASTE_YOUR_KEY_HERE තැනට key එක දැම්මද බලන්න. Error: ${e.message}</div>`;
+  }
+  body.scrollTop=body.scrollHeight;
+}
+</script></html>
