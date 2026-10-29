@@ -117,8 +117,7 @@ document.getElementById('searchBox').addEventListener('input',function(e){
   });
 });
 </script>
-<style>@keyframes glow{from{box-shadow:0 0 20px #00ff88}to{box-shadow:0 0 35px #00ff88}}</style>
-<style>@keyframes glow{0%,100%{box-shadow:0 0 10px #00ff8855}50%{box-shadow:0 0 25px #00ff88}}</style>
+
 <div class="card"><h3>My Projects - LIVE NOW</h3>
 <div class="project"><h4>Password Strength Checker</h4><input class="project-input" id="passInput" placeholder="Enter password..."><button class="btn" onclick="checkPass()">Check</button><div class="result" id="passResult"></div></div>
 <div class="project"><h4>Phishing Link Scanner</h4><input class="project-input" id="linkInput" placeholder="Paste link..."><button class="btn" onclick="checkLink()">Scan</button><div class="result" id="linkResult"></div></div>
@@ -135,7 +134,7 @@ function checkLink(){const l=document.getElementById('linkInput').value.toLowerC
 async function findIP(){const r=document.getElementById('ipResult');r.classList.add('show');r.innerText='Finding...';try{const res=await fetch('https://api.ipify.org?format=json');const d=await res.json();r.innerHTML='Your IP: <b style=color:#00ff88>'+d.ip+'</b>';}catch(e){r.innerText='Error'}}
 </script>
 style> 
-#layan-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#00FF88;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;cursor:pointer;z-index:99999;box-shadow:0 0 15px #00FF88}
+layan-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:#00FF88;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;cursor:pointer;z-index:99999;box-shadow:0 0 15px #00FF88}
 #layan-chat{position:fixed;bottom:90px;right:20px;width:360px;max-width:92%;height:480px;background:#0f0f0f;border:2px solid #00FF88;border-radius:20px;display:none;flex-direction:column;z-index:99999;overflow:hidden}
 .layan-head{background:#1a1a1a;padding:14px;color:#00FF88;font-weight:bold;display:flex;justify-content:space-between}
 .layan-body{flex:1;padding:15px;overflow-y:auto;color:#eee;font-size:14px}
